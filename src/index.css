@@ -20,3 +20,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+footer {
+  height: max-content;
+  background-color: var(--main-black);
+  color:var(--main-gray)
+}
+
+.flex-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+footer ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 10px;
+}
+
+a {
+  color: var(--tertiary);
+  text-decoration: none;
+}
