@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <>
-      <footer>
+      <footer className="flex-container">
         <img src="/Logo.svg"></img>
         <ul>
           <li>Doormat navigation</li>
@@ -25,7 +25,7 @@ const Footer = () => {
           </li>
         </ul>
         <ul>
-          <li>Contact</li>
+          <li>Contacts</li>
           <li>
             <a href="/contact">Address</a>
           </li>
