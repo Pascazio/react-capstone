@@ -95,6 +95,11 @@ header .cta .reserve-button:hover {
   background-color: var(--main-black);
 }
 
+header a {
+  color: inherit;
+  text-decoration: none;
+}
+
 ::-webkit-scrollbar {
   width: 12px;
 }
