@@ -1,11 +1,11 @@
-import BookingForm from "../components/BookingForm";
+import Main from "../components/Main";
 
 const BookingPage = () => {
-    return (
-        <>
-        <BookingForm/>
-        </>
-    )
-}
+  return (
+    <>
+      <Main />
+    </>
+  );
+};
 
 export default BookingPage;
