@@ -115,3 +115,36 @@ header a {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #e76f51;
 }
+
+form {
+  padding: 20px;
+  border-radius: 8px;
+}
+
+form label {
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+form input,
+form select {
+  padding: 10px;
+  border: 1px solid var(--primary-dark);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+form input[type="submit"] {
+  color: white;
+  background-color: var(--primary-dark);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+  background-color: var(--main-black);
+}
