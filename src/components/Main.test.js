@@ -1,17 +1,30 @@
 import { initializeTimes, updateTimes } from './Main';
+import { fetchAPI } from '../js/Api';
 
-describe('initializeTimes function', () => {
-    test('returns the correct initial times', () => {
-        const initialTimes = initializeTimes();
-        expect(initialTimes).toEqual(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
-    });
-});
+jest.mock('../js/Api', () => ({
+  fetchAPI: jest.fn(),
+}));
 
-describe('updateTimes function', () => {
-    test('returns the same times when an action is dispatched', () => {
-        const currentTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
-        const action = { type: 'UPDATE_TIMES', date: '2024-10-10' };
-        const updatedTimes = updateTimes(currentTimes, action);
-        expect(updatedTimes).toEqual(currentTimes);
-    });
+describe('Main Component Functions', () => {
+  beforeEach(() => {
+    fetchAPI.mockClear();
+  });
+
+  test('initializes times correctly', () => {
+    const mockDate = new Date();
+    fetchAPI.mockReturnValue(['17:00', '18:00']);
+    const times = initializeTimes(mockDate);
+    expect(fetchAPI).toHaveBeenCalledWith(mockDate);
+    expect(times).toEqual(['17:00', '18:00']);
+  });
+
+  test('updates times correctly', () => {
+    const mockDate = new Date('2023-01-01');
+    fetchAPI.mockReturnValue(['19:00', '20:00']);
+    const state = [];
+    const action = { type: 'UPDATE_TIMES', date: mockDate };
+    const newState = updateTimes(state, action, mockDate);
+    expect(fetchAPI).toHaveBeenCalledWith(mockDate);
+    expect(newState).toEqual(['19:00', '20:00']);
+  });
 });
