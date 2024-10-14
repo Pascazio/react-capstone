@@ -9,8 +9,11 @@ export const initializeTimes = () => {
 };
 
 export const updateTimes = (state, action) => {
-  return initializeTimes();
-};
+  if (action.type === "UPDATE_TIMES") {
+    return fetchAPI(new Date(action.date));
+  }
+  return state;
+}
 
 const Main = () => {
   const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
