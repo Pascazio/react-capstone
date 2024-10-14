@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import BookingForm from "./BookingForm";
-import { fetchAPI } from "../js/Api";
-
+import { fetchAPI, submitAPI } from "../js/Api";
+import { useNavigate } from "react-router-dom";
 export const initializeTimes = () => {
   const today = new Date();
   const response = fetchAPI(today);
@@ -15,10 +15,19 @@ export const updateTimes = (state, action) => {
   return state;
 }
 
+
+
 const Main = () => {
   const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
-
-  return <BookingForm availableTimes={availableTimes} dispatch={dispatch} />;
+  const navigate = useNavigate();
+  const submitForm = (e, formData) => {
+    e.preventDefault();
+    const response = submitAPI(formData);
+    if(response){
+      navigate("/ConfirmedBooking");
+    }
+  }
+  return <BookingForm availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm} />;
 };
 
 export default Main;

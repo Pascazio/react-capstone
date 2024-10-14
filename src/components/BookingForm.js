@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-const BookingForm = ({ availableTimes, dispatch }) => {
+const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
   const [selectedDate, setSelectedDate] = useState('');
 
   const handleDateChange = (e) => {
@@ -10,7 +9,7 @@ const BookingForm = ({ availableTimes, dispatch }) => {
   };
 
   return (
-    <form style={{ display: 'grid', maxWidth: '200px', gap: '20px' }}>
+    <form style={{ display: 'grid', maxWidth: '200px', gap: '20px' }} onSubmit={(e) => { e.preventDefault(); submitForm(e); }}>
       <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
@@ -41,7 +40,7 @@ const BookingForm = ({ availableTimes, dispatch }) => {
         <option value="Anniversary">Anniversary</option>
       </select>
 
-      <input type="submit" value="Make Your Reservation" />
+      <input type="submit" value="Make Your Reservation"/>
     </form>
   );
 };
