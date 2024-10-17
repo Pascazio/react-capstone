@@ -20,8 +20,7 @@ export const updateTimes = (state, action) => {
 const Main = () => {
   const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
   const navigate = useNavigate();
-  const submitForm = (e, formData) => {
-    e.preventDefault();
+  const submitForm = (formData) => {
     const response = submitAPI(formData);
     if(response){
       navigate("/ConfirmedBooking");

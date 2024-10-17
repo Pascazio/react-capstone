@@ -148,3 +148,14 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   background-color: var(--main-black);
 }
+
+form input[type="submit"]:disabled {
+  background-color: var(--main-gray);
+  cursor: not-allowed;
+}
+
+.booking-form {
+  display: grid;
+  max-width: 200px;
+  gap: 20px;
+}
