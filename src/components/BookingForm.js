@@ -54,6 +54,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
     <form className="booking-form" onSubmit={handleSubmit}>
       <label htmlFor="res-date">Choose date</label>
       <input
+        aria-label="On which date would you like to make a reservation?"
         type="date"
         id="res-date"
         value={selectedDate}
@@ -61,7 +62,7 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
       />
 
       <label htmlFor="res-time">Choose time</label>
-      <select id="res-time" value={selectedTime} onChange={handleTimeChange}>
+      <select id="res-time" value={selectedTime} onChange={handleTimeChange} aria-label="On which time do you like to make a reservation?">
         <option value="">Select a time</option>
         {availableTimes.map((time, index) => (
           <option key={index} value={time}>{time}</option>
@@ -77,16 +78,17 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
         id="guests"
         value={guests}
         onChange={handleGuestsChange}
+        aria-label="How many guests will be there?"
       />
 
       <label htmlFor="occasion">Occasion</label>
-      <select id="occasion" value={occasion} onChange={handleOccasionChange}>
+      <select id="occasion" value={occasion} onChange={handleOccasionChange} aria-label="For wich occasion are you going to visit us?">
         <option value="">Select an occasion</option>
         <option value="Birthday">Birthday</option>
         <option value="Anniversary">Anniversary</option>
       </select>
 
-      <input type="submit" value="Make Your Reservation" disabled={!isFormValid} />
+      <input type="submit" value="Make Your Reservation" disabled={!isFormValid} aria-label="Make Your Reservation" />
     </form>
   );
 };
