@@ -7,8 +7,21 @@ const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
   const [occasion, setOccasion] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
 
+  const dateGuard = (date) => {
+    const today = new Date();
+    if (date < today) {
+      return false;
+    }
+    return true;
+  }
+
   const handleDateChange = (e) => {
     const newDate = e.target.value;
+    const isValid = dateGuard(new Date(newDate));
+    if (!isValid) {
+      alert("Please choose a future date");
+      return;
+    }
     setSelectedDate(newDate);
     dispatch({ type: "UPDATE_TIMES", date: newDate });
   };
