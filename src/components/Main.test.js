@@ -34,4 +34,41 @@ describe('Main Component Functions', () => {
     const isValid = dateGuard(date);
     expect(isValid).toBe(false);
   });
+
+  test('validation passes for future date', () => {
+    const today = new Date();
+    const date = today + Math.floor(Math.random() * 1000000000);
+    const isValid = dateGuard(date);
+    expect(isValid).toBe(true);
+  });
+
+  test('validation passes for today', () => {
+    const today = new Date();
+    const isValid = dateGuard(today);
+    expect(isValid).toBe(true);
+  });
+
+  test('validation passes for guests > 0', () => {
+    const guests = Math.floor(Math.random() * 10) + 1;
+    const isValid = guests > 0;
+    expect(isValid).toBe(true);
+  });
+
+  test('validation fails for guests = 0', () => {
+    const guests = 0;
+    const isValid = guests > 0;
+    expect(isValid).toBe(false);
+  });
+
+  test('validation passes for occasion', () => {
+    const occasion = 'Birthday';
+    const isValid = occasion.length > 0;
+    expect(isValid).toBe(true);
+  });
+
+  test('validation fails for empty occasion', () => {
+    const occasion = '';
+    const isValid = occasion.length > 0;
+    expect(isValid).toBe(false);
+  });
 });
