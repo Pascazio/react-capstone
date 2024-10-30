@@ -1,5 +1,6 @@
 import { initializeTimes, updateTimes } from './Main';
 import { fetchAPI } from '../js/Api';
+import { dateGuard } from '../js/DateGuard';
 
 jest.mock('../js/Api', () => ({
   fetchAPI: jest.fn(),
@@ -26,5 +27,11 @@ describe('Main Component Functions', () => {
     const newState = updateTimes(state, action, mockDate);
     expect(fetchAPI).toHaveBeenCalledWith(mockDate);
     expect(newState).toEqual(['19:00', '20:00']);
+  });
+
+  test('validation fails for past date', () => {
+    const date = new Date('2021-01-01');
+    const isValid = dateGuard(date);
+    expect(isValid).toBe(false);
   });
 });
